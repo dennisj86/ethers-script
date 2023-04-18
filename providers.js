@@ -1,11 +1,15 @@
 import 'dotenv/config';
 import {ethers} from "ethers";
-import {Alchemy, Network} from "alchemy-sdk";
+import {Alchemy, AlchemySubscription, Network} from "alchemy-sdk";
 
 
 
 const settings = {
-    apikey: process.env.ALCHEMY_KEY,
+    apiKey: process.env.ALCHEMY_KEY,
     network: Network.ARB_MAINNET
 }
-const alchemy = new Alchemy(settings) ;
+const alchemy = new Alchemy(settings);
+
+console.log("Current block number", await alchemy.core.getBlock("latest"));
+const wallet = new ethers.Wallet(process.env.PRIVATE_KEY);
+console.log(wallet.address);
