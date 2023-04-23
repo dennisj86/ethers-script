@@ -1,7 +1,6 @@
 import {ethers} from "ethers";
-import {Alchemy,  BigNumber, Network} from "alchemy-sdk";
+import {Alchemy, Network} from "alchemy-sdk";
 import 'dotenv/config';
-
 
 
 const settings = {
@@ -36,7 +35,6 @@ const tx = await wallet.signTransaction(
     }
 )
 const response = await alchemy.transact.sendTransaction(tx)
-    console.log("sent:", response);
+console.log("sent:", response);
 walletBalance = await alchemy.core.getBalance(wallet.address);
 walletBalanceAsValue = ethers.formatEther(walletBalance._hex);
-    console.log("new Balance:", walletBalanceAsValue);
